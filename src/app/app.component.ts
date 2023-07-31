@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { quizData } from './data/quiz_data';
+import { Choice } from './question';
 
 @Component({
   selector: 'app-root',
@@ -6,17 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  question = {
-    text: 'Who painted the Mona Lisa?',
-    choices: [
-      'Pablo Picasso',
-      'Leonardo da Vinci',
-      'Vincent van Gogh',
-      'Michelangelo'
-    ],
-  };
+  questions = quizData;
+  currentQuestionIndex = 0;
 
-  onClickChoice(text: string) {
-    console.log(text);
+  onClickChoice(choice: Choice) {
+    console.log('User clicked ' + choice.text);
+
+    this.playSound();
+
+    if (this.currentQuestionIndex < this.questions.length - 1) {
+      this.currentQuestionIndex++;
+    }
+  }
+
+  playSound() {
+    const audio = new Audio();
+    audio.src = './assets/audio/click.wav';
+    audio.load();
+    audio.play();
   }
 }
