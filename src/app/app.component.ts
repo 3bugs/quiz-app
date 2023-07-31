@@ -12,6 +12,7 @@ export class AppComponent {
 
   questions = quizData;
   currentQuestionIndex = 0;
+  isEnd = false;
 
   constructor() {
     this.audio.src = './assets/audio/click.wav';
@@ -24,6 +25,8 @@ export class AppComponent {
 
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
+    } else {
+      this.isEnd = true;
     }
   }
 
