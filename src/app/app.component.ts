@@ -29,6 +29,7 @@ export class AppComponent {
 
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
+      this.questions[this.currentQuestionIndex].choices.sort((a, b) => 0.5 - Math.random());
     } else {
       this.isEnd = true;
     }
@@ -46,6 +47,7 @@ export class AppComponent {
   }
 
   private newQuiz() {
+    this.questions.sort((a, b) => 0.5 - Math.random());
     this.isEnd = false;
     this.currentQuestionIndex = 0;
     this.score = 0;
