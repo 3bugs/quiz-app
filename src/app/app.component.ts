@@ -8,8 +8,14 @@ import { Choice } from './question';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  audio = new Audio();
+
   questions = quizData;
   currentQuestionIndex = 0;
+
+  constructor() {
+    this.audio.src = './assets/audio/click.wav';
+  }
 
   onClickChoice(choice: Choice) {
     console.log('User clicked ' + choice.text);
@@ -21,10 +27,10 @@ export class AppComponent {
     }
   }
 
-  playSound() {
-    const audio = new Audio();
-    audio.src = './assets/audio/click.wav';
-    audio.load();
-    audio.play();
+  playSound() { 
+    this.audio.load();
+    this.audio.addEventListener('canplaythrough', () => {
+      this.audio.play();
+    });
   }
 }
