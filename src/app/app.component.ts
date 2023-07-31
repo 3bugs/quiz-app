@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { quizData } from './data/quiz_data';
-import { Choice } from './question';
+import { Component, inject } from '@angular/core';
+import { Choice, Question } from './question';
+import { QuizService } from './quiz.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,15 @@ import { Choice } from './question';
 })
 export class AppComponent {
   audio = new Audio();
+  quizService: QuizService = inject(QuizService);
 
-  questions = quizData;
+  questions: Question[];
   currentQuestionIndex = 0;
   isEnd = false;
   score = 0;
 
   constructor() {
+    this.questions = this.quizService.getQuizData();
     this.audio.src = './assets/audio/click.wav';
     this.newQuiz();
   }
