@@ -13,15 +13,19 @@ export class AppComponent {
   questions = quizData;
   currentQuestionIndex = 0;
   isEnd = false;
+  score = 0;
 
   constructor() {
     this.audio.src = './assets/audio/click.wav';
+    this.newQuiz();
   }
 
   onClickChoice(choice: Choice) {
     console.log('User clicked ' + choice.text);
 
     this.playSound();
+
+    if (choice.isAnswer) this.score++;
 
     if (this.currentQuestionIndex < this.questions.length - 1) {
       this.currentQuestionIndex++;
@@ -30,10 +34,20 @@ export class AppComponent {
     }
   }
 
-  playSound() { 
+  private playSound() { 
     this.audio.load();
     this.audio.addEventListener('canplaythrough', () => {
       this.audio.play();
     });
+  }
+
+  onClickNewQuiz() {
+    this.newQuiz();
+  }
+
+  private newQuiz() {
+    this.isEnd = false;
+    this.currentQuestionIndex = 0;
+    this.score = 0;
   }
 }

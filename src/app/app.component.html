@@ -1,5 +1,5 @@
 <div class="main vertical-center">
-  
+
   <!-- แสดงคำถาม -->
   <ng-template [ngIf]="!isEnd" [ngIfElse]="showScore">
     <div class="container" style="max-width: 800px;">
@@ -25,7 +25,16 @@
   <!-- แสดงคะแนน -->
   <ng-template #showScore>
     <div class="container" style="max-width: 800px;">
-      THE END
+
+      <div class="row">
+        <div class="col-12 text-center h2">
+          Your score: {{score}}
+        </div>
+        <div class="col-12 text-center h2">
+          <button (click)="onClickNewQuiz()" class="btn btn-success">New Quiz</button>
+        </div>
+      </div>
+
     </div>
   </ng-template>
 
