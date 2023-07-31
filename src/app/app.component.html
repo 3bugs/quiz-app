@@ -1,11 +1,13 @@
-<div class="container">
-  <h2>Question 1 of 10</h2>
-  <h3 class="mb-5 mt-3">{{question.text}}</h3>
-  <div class="row g-2">
-    <div *ngFor="let choice of question.choices" class="col-xs-12 col-md-6">
-      <button (click)="onClickChoice(choice)" class="btn btn-primary" style="width: 100%;">
-        {{choice}}
-      </button>
+<div class="vertical-center">
+  <div class="container">
+    <h2>Question 1 of 10</h2>
+    <h3 class="mb-5 mt-3">{{question.text}}</h3>
+    <div class="row g-2">
+      <div *ngFor="let choice of question.choices" class="col-xs-12 col-md-6">
+        <button (click)="onClickChoice(choice)" class="btn btn-primary" style="width: 100%;">
+          {{choice}}
+        </button>
+      </div>
     </div>
   </div>
 </div>
