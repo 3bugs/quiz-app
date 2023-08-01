@@ -18,7 +18,7 @@ export class QuizComponent {
 
   constructor() {
     this.questions = this.quizService.getQuizData();
-    this.audio.src = '../assets/audio/click.wav';
+    this.audio.src = './assets/audio/click.wav';
     this.newQuiz();
   }
 

@@ -1,20 +1,23 @@
 <div class="main">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><b>Quiz App 🚀</b></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Quiz</a>
+            <a class="nav-link" (click)="activeMenu = 0" [class.active]="activeMenu === 0" [routerLink]="['/']">Learn</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" (click)="activeMenu = 1" [class.active]="activeMenu === 1" [routerLink]="['/quiz']">Quiz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="activeMenu = 2" [class.active]="activeMenu === 2" [routerLink]="['/about']">About</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="page-content">
-    <app-quiz></app-quiz>
+    <router-outlet></router-outlet>
   </div>
 </div>
